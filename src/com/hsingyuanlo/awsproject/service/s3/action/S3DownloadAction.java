@@ -3,8 +3,6 @@ package com.hsingyuanlo.awsproject.service.s3.action;
 import java.io.FileOutputStream;
 import java.util.Map;
 
-import org.apache.commons.cli.Options;
-
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
@@ -23,18 +21,11 @@ public class S3DownloadAction extends AwsAction {
     final static public String KEY      = "key";
     final static public String FILEPATH = "filepath";
     
-    private Options mOptions = new Options();
-    
     public S3DownloadAction() {
         mOptions.addOption("r", REGION,   true, "(required) AWS region");
         mOptions.addOption("b", BUCKET,   true, "(required) AWS S3 bucket");
         mOptions.addOption("k", KEY,      true, "(required) AWS S3 key");
         mOptions.addOption("f", FILEPATH, true, "(required) Local downloaded file path");
-    }
-    
-    @Override
-    protected Options getOptions() {
-        return mOptions;
     }
     
     @Override
@@ -75,9 +66,10 @@ public class S3DownloadAction extends AwsAction {
             int len = 0;
             byte buf[] = new byte[1000];
             while ((len = ois.read(buf)) != -1) {
+                System.out.println("\r");
                 fos.write(buf, 0, len);
                 count += len;
-                System.out.print(""+(count)+"/"+(length)+"\r");
+                System.out.print(""+(count)+"/"+(length));
             }
             System.out.println(""+bucket+":"+key+" Download complete" );
         } finally {

@@ -7,7 +7,7 @@ import com.hsingyuanlo.awsproject.service.s3.S3Manager;
 
 /**
  * Command:
- *  AwsCommand s3 [action] [options]
+ *  AwsCommand [service] [action] [options]
  * 
  * @author hylo
  *
@@ -50,8 +50,8 @@ public class AwsCommand {
     private void showUsage() {
         System.out.println();
         System.out.println(" AwsCommand [service] [action] [options]");
-        System.out.println(" Services: ");
-        System.out.println(" 1. s3 ");
+        System.out.println(" Services:");
+        System.out.println(" 1. s3");
         System.out.println();
     }
 }

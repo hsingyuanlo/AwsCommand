@@ -4,9 +4,13 @@ import java.util.Arrays;
 
 abstract public class AwsManager {
     
+    /**
+     * Parse parameters and run
+     * @param args
+     */
     public void parseAndRun(String[] args) {
         if (args.length < 1) {
-            showUsage();
+            doShowUsage();
             return;
         }
         
@@ -18,7 +22,30 @@ abstract public class AwsManager {
         doRunAction(modified_args);
     }
     
-    abstract protected void doSetAction(String action);
-    abstract protected void doRunAction(String[] args);
-    abstract protected void showUsage();
+    /**
+     * Set action
+     * @param action
+     */
+    protected void doSetAction(String action) {
+        onSetAction(action);
+    }
+    
+    /**
+     * Run action
+     * @param args
+     */
+    protected void doRunAction(String[] args) {
+        onRunAction(args);
+    }
+    
+    /**
+     * Show action
+     */
+    protected void doShowUsage() {
+        onShowUsage();
+    }
+    
+    abstract protected void onSetAction(String action);
+    abstract protected void onRunAction(String[] args);
+    abstract protected void onShowUsage();
 }

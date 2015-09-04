@@ -10,21 +10,21 @@ public class S3Manager extends AwsManager {
     public AwsAction mAction = null;
     
     @Override
-    protected void doSetAction(String action) {
+    protected void onSetAction(String action) {
         if (ACTION_DOWNLOAD.equals(action)) {
             mAction = new S3DownloadAction();
         } else {
-            showUsage();
+            onShowUsage();
         }
     }
 
     @Override
-    protected void doRunAction(String[] args) {
+    protected void onRunAction(String[] args) {
         mAction.exec(args);
     }
     
     @Override
-    protected void showUsage() {
+    protected void onShowUsage() {
         System.out.println();
         System.out.println(" s3 [action] [options]");
         System.out.println(" Actions:");

@@ -11,12 +11,23 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 
+/**
+ * AwsAction is the base class for AWS operations
+ * @author hylo
+ *
+ */
+
 abstract public class AwsAction {
     
+    protected Options mOptions = new Options();
+    
+    /**
+     * Execute template method
+     * @param args
+     */
     public void exec(String[] args) {
         try {
-            Options options = getOptions();
-            Map<String, String> map = doParse(args, options);
+            Map<String, String> map = doParse(args, mOptions);
             boolean result = doRunAction(map);
             
             if (!result) {
@@ -27,6 +38,13 @@ abstract public class AwsAction {
         }
     }
     
+    /**
+     * Parse parameters
+     * @param args
+     * @param options
+     * @return
+     * @throws Exception
+     */
     protected Map<String, String> doParse(String[] args, Options options) throws Exception {
         Map<String, String> map = new HashMap<String, String>();
         
@@ -44,16 +62,25 @@ abstract public class AwsAction {
         return map;
     }
     
+    /**
+     * Run action from child class
+     * @param map
+     * @return
+     * @throws Exception
+     */
     protected boolean doRunAction(Map<String, String> map) throws Exception {
         return onRunAction(map);
     }
     
+    /**
+     * Show usage
+     */
     protected void doShowUsage() {
         System.out.println();
         // onShowUsage
         onShowUsage();
         // Options
-        Collection<Option> opts = getOptions().getOptions();
+        Collection<Option> opts = mOptions.getOptions();
         System.out.println(" Options: ");
         for (Option opt : opts) {
             System.out.println("  -"+opt.getOpt()+", --"+opt.getLongOpt()+"\t"+opt.getDescription());
@@ -61,7 +88,16 @@ abstract public class AwsAction {
         System.out.println();
     }
     
-    abstract protected Options getOptions();
+    /**
+     * Call run-action in child class
+     * @param map
+     * @return true if success; otherwise false
+     * @throws Exception
+     */
     abstract protected boolean onRunAction(Map<String, String> map) throws Exception;
-    abstract protected void    onShowUsage();
+    
+    /**
+     * Call show-usage in child class
+     */
+    abstract protected void onShowUsage();
 }
