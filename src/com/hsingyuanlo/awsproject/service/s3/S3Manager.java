@@ -7,6 +7,7 @@ import com.hsingyuanlo.awsproject.service.s3.action.S3DownloadAction;
 public class S3Manager extends AwsManager {
     
     final static public String ACTION_DOWNLOAD = "download";
+    
     public AwsAction mAction = null;
     
     @Override
