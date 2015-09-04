@@ -66,12 +66,13 @@ public class S3DownloadAction extends AwsAction {
             int len = 0;
             byte buf[] = new byte[1000];
             while ((len = ois.read(buf)) != -1) {
-                System.out.println("\r");
+                System.out.print("\r");
                 fos.write(buf, 0, len);
                 count += len;
                 System.out.print(""+(count)+"/"+(length));
             }
-            System.out.println(""+bucket+":"+key+" Download complete" );
+            System.out.println();
+            System.out.println("["+bucket+"] "+key+" download complete");
         } finally {
             ois.close();
             fos.close();
