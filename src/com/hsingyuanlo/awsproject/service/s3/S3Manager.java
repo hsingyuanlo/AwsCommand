@@ -27,7 +27,7 @@ public class S3Manager extends AwsManager {
     protected void showUsage() {
         System.out.println();
         System.out.println(" s3 [action] [options]");
-        System.out.println(" actions:");
+        System.out.println(" Actions:");
         System.out.println(" 1. download");
         System.out.println();
     }

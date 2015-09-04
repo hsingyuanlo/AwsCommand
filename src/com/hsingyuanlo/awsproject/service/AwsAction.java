@@ -54,9 +54,9 @@ abstract public class AwsAction {
         onShowUsage();
         // Options
         Collection<Option> opts = getOptions().getOptions();
-        System.out.println("Options: ");
+        System.out.println(" Options: ");
         for (Option opt : opts) {
-            System.out.println(" -"+opt.getOpt()+", --"+opt.getLongOpt()+"\t"+opt.getDescription());
+            System.out.println("  -"+opt.getOpt()+", --"+opt.getLongOpt()+"\t"+opt.getDescription());
         }
         System.out.println();
     }

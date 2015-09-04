@@ -50,7 +50,7 @@ public class AwsCommand {
     private void showUsage() {
         System.out.println();
         System.out.println(" AwsCommand [service] [action] [options]");
-        System.out.println(" Service: ");
+        System.out.println(" Services: ");
         System.out.println(" 1. s3 ");
         System.out.println();
     }

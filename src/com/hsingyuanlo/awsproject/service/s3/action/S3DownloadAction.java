@@ -89,6 +89,6 @@ public class S3DownloadAction extends AwsAction {
     }
     
     protected void onShowUsage() {
-        System.out.println("download [options]");
+        System.out.println(" download [options]");
     }
 }
