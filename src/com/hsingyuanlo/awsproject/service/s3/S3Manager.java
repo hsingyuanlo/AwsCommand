@@ -1,13 +1,13 @@
 package com.hsingyuanlo.awsproject.service.s3;
 
+import com.hsingyuanlo.awsproject.service.AwsAction;
 import com.hsingyuanlo.awsproject.service.AwsManager;
-import com.hsingyuanlo.awsproject.service.s3.action.S3Action;
 import com.hsingyuanlo.awsproject.service.s3.action.S3DownloadAction;
 
 public class S3Manager extends AwsManager {
     
     final static public String ACTION_DOWNLOAD = "download";
-    public S3Action mAction = null;
+    public AwsAction mAction = null;
     
     @Override
     protected void doSetAction(String action) {
@@ -26,8 +26,9 @@ public class S3Manager extends AwsManager {
     @Override
     protected void showUsage() {
         System.out.println();
-        System.out.println(" s3 Command : ");
-        System.out.println(" 1. download [options]");
+        System.out.println(" s3 [action] [options]");
+        System.out.println(" actions:");
+        System.out.println(" 1. download");
         System.out.println();
     }
 }

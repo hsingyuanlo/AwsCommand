@@ -49,8 +49,9 @@ public class AwsCommand {
     
     private void showUsage() {
         System.out.println();
-        System.out.println(" AwsCommand:");
-        System.out.println(" 1. AwsCommand s3 [action] [options]");
+        System.out.println(" AwsCommand [service] [action] [options]");
+        System.out.println(" Service: ");
+        System.out.println(" 1. s3 ");
         System.out.println();
     }
 }

@@ -1,10 +1,8 @@
 package com.hsingyuanlo.awsproject.service.s3.action;
 
 import java.io.FileOutputStream;
-import java.util.Collection;
 import java.util.Map;
 
-import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 
 import com.amazonaws.auth.AWSCredentials;
@@ -16,10 +14,10 @@ import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
 import com.hsingyuanlo.awsproject.auth.AuthManager;
+import com.hsingyuanlo.awsproject.service.AwsAction;
 
-public class S3DownloadAction extends S3Action {
+public class S3DownloadAction extends AwsAction {
     
-    final static public String USAGE    = "download <options>";
     final static public String REGION   = "region";
     final static public String BUCKET   = "bucket";
     final static public String KEY      = "key";
@@ -91,14 +89,6 @@ public class S3DownloadAction extends S3Action {
     }
     
     protected void onShowUsage() {
-        super.onShowUsage();
-        Collection<Option> opts = getOptions().getOptions();
-        System.out.println("Action : download");
-        System.out.println("Options: ");
-        for (Option opt : opts) {
-            System.out.println(" -"+opt.getOpt()+", --"+opt.getLongOpt()+"\t"+opt.getDescription());
-        }
-        System.out.println();
-
+        System.out.println("download [options]");
     }
 }

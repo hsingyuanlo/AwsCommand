@@ -1,5 +1,6 @@
 package com.hsingyuanlo.awsproject.service;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -48,7 +49,16 @@ abstract public class AwsAction {
     }
     
     protected void doShowUsage() {
+        System.out.println();
+        // onShowUsage
         onShowUsage();
+        // Options
+        Collection<Option> opts = getOptions().getOptions();
+        System.out.println("Options: ");
+        for (Option opt : opts) {
+            System.out.println(" -"+opt.getOpt()+", --"+opt.getLongOpt()+"\t"+opt.getDescription());
+        }
+        System.out.println();
     }
     
     abstract protected Options getOptions();
