@@ -4,18 +4,25 @@ import java.util.Arrays;
 
 abstract public class AwsManager {
     
+    protected AwsAction mAction = null;
+    
     /**
      * Parse parameters and run
      * @param args
      */
     public void parseAndRun(String[] args) {
+        // check number of parameters
         if (args.length < 1) {
             doShowUsage();
             return;
         }
         
         // Set action
-        doSetAction(args[0]);
+        mAction = doGetAction(args[0]);
+        if (mAction == null) {
+            doShowUsage();
+            return;
+        }
         
         // Run service action
         String[] modified_args = Arrays.copyOfRange(args, 1, args.length);
@@ -23,11 +30,11 @@ abstract public class AwsManager {
     }
     
     /**
-     * Set action
+     * Get action
      * @param action
      */
-    protected void doSetAction(String action) {
-        onSetAction(action);
+    protected AwsAction doGetAction(String action) {
+        return onGetAction(action);
     }
     
     /**
@@ -35,17 +42,16 @@ abstract public class AwsManager {
      * @param args
      */
     protected void doRunAction(String[] args) {
-        onRunAction(args);
+        mAction.exec(args);
     }
     
     /**
-     * Show action
+     * Show service usage
      */
     protected void doShowUsage() {
         onShowUsage();
     }
     
-    abstract protected void onSetAction(String action);
-    abstract protected void onRunAction(String[] args);
+    abstract protected AwsAction onGetAction(String action);
     abstract protected void onShowUsage();
 }

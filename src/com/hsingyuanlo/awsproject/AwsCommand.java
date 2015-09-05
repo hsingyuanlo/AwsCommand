@@ -3,6 +3,7 @@ package com.hsingyuanlo.awsproject;
 import java.util.Arrays;
 
 import com.hsingyuanlo.awsproject.auth.AuthManager;
+import com.hsingyuanlo.awsproject.service.elasticloadbalancing.ElasticloadbalancingManager;
 import com.hsingyuanlo.awsproject.service.s3.S3Manager;
 
 /**
@@ -42,6 +43,8 @@ public class AwsCommand {
         String[] modified_args = Arrays.copyOfRange(args, 1, args.length);
         if ("s3".equals(args[0])) {
             new S3Manager().parseAndRun(modified_args);
+        } else if ("elb".equals(args[0])) {
+            new ElasticloadbalancingManager().parseAndRun(modified_args);
         } else {
             showUsage();
         }
@@ -52,6 +55,7 @@ public class AwsCommand {
         System.out.println(" AwsCommand [service] [action] [options]");
         System.out.println(" Services:");
         System.out.println(" 1. s3");
+        System.out.println(" 2. elb");
         System.out.println();
     }
 }
