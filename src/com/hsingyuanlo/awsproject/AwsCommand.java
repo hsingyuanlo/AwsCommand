@@ -15,7 +15,7 @@ import com.hsingyuanlo.awsproject.service.s3.S3Manager;
  */
 
 public class AwsCommand {
-
+    
     static public void main(String[] args) throws Exception {
         new AwsCommand().parseAndRun(args);
     }
@@ -39,7 +39,7 @@ public class AwsCommand {
             showUsage();
             return;
         }
-        // Shift parameters by 1
+        // Invoke right AwsManager service operation
         String[] modified_args = Arrays.copyOfRange(args, 1, args.length);
         if ("s3".equals(args[0])) {
             new S3Manager().parseAndRun(modified_args);

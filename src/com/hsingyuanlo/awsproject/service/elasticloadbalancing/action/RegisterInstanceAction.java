@@ -16,7 +16,7 @@ import com.hsingyuanlo.awsproject.service.AwsAction;
 import com.hsingyuanlo.awsproject.utils.MetaUtil;
 
 public class RegisterInstanceAction extends AwsAction {
-
+    
     static public String INSTANCE_ID = "instance-id";
     static public String ELB_NAME    = "elb-name";
     static public String EC2_SELF    = "self";
@@ -72,10 +72,9 @@ public class RegisterInstanceAction extends AwsAction {
         System.out.println("Register instance("+instanceId+") with loadbalancer("+elbName+"): failed");
         return false;
     }
-
+    
     @Override
     protected void onShowUsage() {
         System.out.println(" register-instance [options]");
     }
-
 }

@@ -16,9 +16,9 @@ import com.hsingyuanlo.awsproject.service.AwsAction;
 import com.hsingyuanlo.awsproject.utils.MetaUtil;
 
 public class DeregisterInstanceAction extends AwsAction {
-
+    
     static public String INSTANCE_ID = "instance-id";
-    static public String ELB_NAME = "elb-name";
+    static public String ELB_NAME    = "elb-name";
     static public String EC2_SELF    = "self";
     
     public DeregisterInstanceAction() {
@@ -72,10 +72,9 @@ public class DeregisterInstanceAction extends AwsAction {
         System.out.println("Deregister instance("+instanceId+") from loadbalancer("+elbName+"): ok");
         return true;
     }
-
+    
     @Override
     protected void onShowUsage() {
         System.out.println(" deregister-instance [options]");
     }
-
 }
