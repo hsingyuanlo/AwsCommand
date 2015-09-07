@@ -16,13 +16,12 @@ import com.hsingyuanlo.awsproject.service.AwsAction;
 
 public class S3DownloadAction extends AwsAction {
     
-    final static public String REGION   = "region";
     final static public String BUCKET   = "bucket";
     final static public String KEY      = "key";
     final static public String FILEPATH = "filepath";
     
     public S3DownloadAction() {
-        mOptions.addOption("r", REGION,   true, "(required) AWS region");
+        super();
         mOptions.addOption("b", BUCKET,   true, "(required) AWS S3 bucket");
         mOptions.addOption("k", KEY,      true, "(required) AWS S3 key");
         mOptions.addOption("f", FILEPATH, true, "(required) Local downloaded file path");
@@ -81,6 +80,7 @@ public class S3DownloadAction extends AwsAction {
         return true;
     }
     
+    @Override
     protected void onShowUsage() {
         System.out.println(" download [options]");
     }

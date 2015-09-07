@@ -2,6 +2,8 @@ package com.hsingyuanlo.awsproject.service.elasticloadbalancing;
 
 import com.hsingyuanlo.awsproject.service.AwsAction;
 import com.hsingyuanlo.awsproject.service.AwsManager;
+import com.hsingyuanlo.awsproject.service.elasticloadbalancing.action.DeregisterInstanceAction;
+import com.hsingyuanlo.awsproject.service.elasticloadbalancing.action.RegisterInstanceAction;
 
 public class ElasticloadbalancingManager extends AwsManager {
     
@@ -10,6 +12,11 @@ public class ElasticloadbalancingManager extends AwsManager {
     
     @Override
     protected AwsAction onGetAction(String action) {
+        if (REGISTER_INSTANCE.equals(action)) {
+            return new RegisterInstanceAction();
+        } else if (DEREGISTER_INSTANCE.equals(action)) {
+            return new DeregisterInstanceAction();
+        }
         return null;
     }
 

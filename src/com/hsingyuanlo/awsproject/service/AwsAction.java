@@ -19,7 +19,13 @@ import org.apache.commons.cli.Options;
 
 abstract public class AwsAction {
     
+    final static public String REGION   = "region";
+    
     protected Options mOptions = new Options();
+    
+    public AwsAction() {
+        mOptions.addOption("r", REGION,   true, "(required) AWS region");
+    }
     
     /**
      * Execute template method
