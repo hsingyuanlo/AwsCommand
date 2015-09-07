@@ -22,6 +22,7 @@ public class RegisterInstanceAction extends AwsAction {
     static public String EC2_SELF    = "self";
     
     public RegisterInstanceAction() {
+        super();
         mOptions.addOption("i", INSTANCE_ID, true,  "(required) AWS ec2 id");
         mOptions.addOption("l", ELB_NAME,    true,  "(required) AWS elasticloadbalancing name");
     }

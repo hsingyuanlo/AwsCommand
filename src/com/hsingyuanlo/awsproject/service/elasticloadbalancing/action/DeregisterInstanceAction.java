@@ -22,13 +22,14 @@ public class DeregisterInstanceAction extends AwsAction {
     static public String EC2_SELF    = "self";
     
     public DeregisterInstanceAction() {
+        super();
         mOptions.addOption("i", INSTANCE_ID, true,  "(required) AWS ec2 id");
         mOptions.addOption("l", ELB_NAME,    true,  "(required) AWS elasticloadbalancing name");
     }
     
     @Override
     protected boolean onRunAction(Map<String, String> map) throws Exception {
-
+        
         String regionName = map.get(REGION);
         String instanceId = map.get(INSTANCE_ID);
         String elbName = map.get(ELB_NAME);
