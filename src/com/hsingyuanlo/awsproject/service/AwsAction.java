@@ -40,6 +40,7 @@ abstract public class AwsAction {
                 doShowUsage();
             }
         } catch (Exception e) {
+            e.printStackTrace();
             doShowUsage();
         }
     }
